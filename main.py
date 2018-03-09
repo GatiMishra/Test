@@ -1,19 +1,6 @@
 from flask import Flask,render_template
-# from sqlalchemy package we can import create_engine,Column, String, Integer, Date,asc
-from sqlalchemy import create_engine,Column, String, Integer, Date,asc, Sequence
-
-# from sqlalchemy package we can import declarativ_base
-from sqlalchemy.ext.declarative import declarative_base
-
-# from sqlalchemy package we can import sessionmaker
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.exc import *
-
-from config import Config
-from app import routes,featureRequestManager, featureRequestService
 
 app = Flask(__name__)
-app.config.from_object(Config)
 
 @app.route('/FeatureRequestDetails')
 def featureRequestDetails():
