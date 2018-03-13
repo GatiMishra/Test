@@ -1,0 +1,86 @@
+<!-- form.html consists of a simple form with all the required input fields. This page loads on routing to http://127.0.0.1:5000/-->
+<html>
+    <!-- Head section consists of title of application and source script files knockoutjs and jquery-->
+
+    <head>
+        <title>Feature App</title> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">  
+        <script type="text/javascript" src="{{ url_for ('static', filename='js/knockout-3.4.2.js')}}"></script>
+        <script type="text/javascript" src="{{ url_for ('static', filename='js/jquery-3.3.1.js')}}"></script>
+        <script type="text/javascript" src="{{ url_for ('static', filename='js/bootstrap.min.js')}}"></script>
+        {% extends "base.html" %}
+    </head>
+
+    <body>
+        {% block content %}    
+        <fieldset>
+            <legend>New Feature Request Form</legend>
+            <!-- Consists of form with title,description,client,clientpriority,targetdate,productarea-->
+            <!-- All the inputs in form are data bind using knockout.js concept and source script is present in formBind.js -->
+            <form data-bind="submit: onSubmit" class="form-horizontal">
+                <div class="container" style="border: 5px solid #D73925;border-radius: 25px; background-color:#f0f0f0">
+                    </br>
+                    <div class="form-group">
+                        <div class="col-sm-4" style="text-align: right">
+                            <label for="title">Title<code>*</code></label>
+                        </div>
+                        <div class="col-sm-4" align="left">
+                            <input class="form-control" maxlength="100" data-bind='value: title, valueUpdate: "afterkeydown"' required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4" style="text-align: right">
+                            <label for="description">Description</label>
+                        </div>
+                        <div class="col-sm-4" align="left">
+                            <textarea class="form-control" rows="3" maxlength="100" data-bind='value: description, valueUpdate: "afterkeydown"'>
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4" style="text-align: right">
+                            <label for="client">Client<code>*</code></label>
+                        </div>
+                        <div class="col-sm-4" align="left">
+                            <select class="form-control" data-bind="options: clientValues, value: client" required></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4" style="text-align: right">
+                            <label for="clientPriority">Client Priority<code>*</code></label>
+                        </div>
+                        <div class="col-sm-4" align="left" >
+                            <input class="form-control" type="number" min="1" pattern="[0-9]" data-bind='value: clientPriority, valueUpdate: "afterkeydown"' required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4" style="text-align: right">
+                            <label for="targetDate">Target Date</label>
+                        </div>
+                        <div class="col-sm-4" align="left">
+                            <input class="form-control" id="targetdateid" max="2019-02-20" type="date" data-bind='value: targetDate, valueUpdate: "afterkeydown"' />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4" style="text-align: right">
+                            <label for="productArea">Product Area<code>*</code></label>
+                        </div>
+                        <div class="col-sm-4" align="left">
+                            <select class="form-control" data-bind="options: productAreaValues, value: productArea" required></select>
+                        </div>
+                    </div>
+                </div></br>  
+                <div align="center"> 
+                <button type="submit" class="btn btn-primary">Submit</button> 
+                </div>          
+            </form>
+        </fieldset>
+        <script type="text/javascript" src="{{ url_for ('static', filename='js/formBind.js')}}"></script>
+        <script>
+        var now = new Date(),
+        minDate = now.toISOString().substring(0,10);
+        $('#targetdateid').prop('min', minDate);
+        </script>    
+        {% endblock %}
+    </body>
+</html>
