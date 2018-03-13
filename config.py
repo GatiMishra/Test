@@ -11,7 +11,8 @@ class Config(object):
     # SET database connection string
     #db_string = "postgres://postgres:Password0@localhost:5432/featureapp"
 	#Need to uncomment when using cloud database
-    db_string = "postgres://myadmin:Password0@featureapp.postgres.database.azure.com:5432/featureappdb"
+    #db_string = "postgres://myadmin:Password0@featureapp.postgres.database.azure.com:5432/featureappdb"
+    db_string = "dbname='featureappdb' user='myadmin' host='featureapp.postgres.database.azure.com’ password='Password0' port='5432' sslmode='true'"
     # an Engine, which the Session will use for connection
     db = create_engine(db_string)
     # Declarative, which allows us to create classes that include directives to describe the actual database table 
