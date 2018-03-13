@@ -20,7 +20,6 @@ class FeatureRequestManger:
         def createFeatureRequestManager():
             # Instance of FeatureRequestService class is created to accesss functions createFeatureRequestService
             featurerequestservice= FeatureRequestService()
-            
             if request.method == 'POST':
                 # Creating a FeatureRequestApp class object with title, description, client, clientPriority, targetData and productArea as arguments
                 featureRequestApp=FeatureRequestApp(request.json['title'],request.json['description'],request.json['client'],request.json['clientPriority'],request.json['targetDate'],request.json['productArea'])
@@ -38,7 +37,7 @@ class FeatureRequestManger:
         def retrieveFeatureRequestManager():
             if request.method == 'GET':
                 # Instance of FeatureRequestService class is created to accesss functions retrieveFeatureRequestService
-                feature= FeatureRequestService()                
+                feature= FeatureRequestService()
                 # Response from retrieveFeatureRequestService is assigned to 'result'       
                 output= feature.retrieveFeatureRequestService()
                 # Returns a JSON response 
