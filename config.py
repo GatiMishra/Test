@@ -9,7 +9,9 @@ class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
     SQLALCHEMY_TRACK_MODIFICATIONS=True
     # SET database connection string
-    db_string = "postgres://postgres:Password0@localhost:5432/featureapp"
+    #db_string = "postgres://postgres:Password0@localhost:5432/featureapp"
+	#Need to uncomment when using cloud database
+    db_string = "postgres://myadmin:Password0@featureapp.postgres.database.azure.com:5432/featureappdb"
     # an Engine, which the Session will use for connection
     db = create_engine(db_string)
     # Declarative, which allows us to create classes that include directives to describe the actual database table 
