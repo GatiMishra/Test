@@ -13,7 +13,7 @@ def featureRequestDetails():
     """ featureRequestDetails function is used to display featureRequestDetails html page"""
     return render_template('featureRequestDetails.html')
 
-@app.route('/')
+@app.route('/demotestapp.azurewebsites.net/')
 def featureRequestForm():
     """ featureRequestForm function is used to display featureRequestForm html page"""
     return render_template('featureRequestForm.html')
