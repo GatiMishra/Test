@@ -8,12 +8,12 @@ from config import Config
 
 app = Flask(__name__)
 
-@app.route('/demotestapp.azurewebsites.net/FeatureRequestDetails')
+@app.route('/FeatureRequestDetails')
 def featureRequestDetails():
     """ featureRequestDetails function is used to display featureRequestDetails html page"""
     return render_template('featureRequestDetails.html')
 
-@app.route('/demotestapp.azurewebsites.net/')
+@app.route('/')
 def featureRequestForm():
     """ featureRequestForm function is used to display featureRequestForm html page"""
     return render_template('featureRequestForm.html')
